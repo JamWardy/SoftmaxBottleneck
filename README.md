@@ -1,0 +1,17 @@
+# How does the Softmax Bottleneck affect LLM Generation?
+
+## I'm not into ML - Why should I care?
+
+LLMs are really good at generating text, just look at ChatGPT, Claude, Gemini, etc. But they aren't perfect, and usually when we generate text from them we manipulate the output to improve the quality of the text. We have seen that this method works, and we have an idea why it works, but we haven't FULLY explored why it works and why the output isn't perfect in the first place. The work in this thesis allows us to more thoroughly understand how the method works and looks at one possible explanation for why the original output isn't good enough. It's one small slice of research that hopefully goes towards making LLMs a bit better :).
+
+## I'm into ML - How does it work?
+
+LLMs are known to overinflate the probability of generating unlikely tokens for a given prompt. This problem, which we refer to as oversmoothing, has been theorised, but has no formal definition or metric. In this project, we provide the first formal metrics for oversmoothing. Additionally, it has been theorised that a common architecture component of LLMs, the softmax layer, imposes a constraint on the expressivity of model outputs, which leads to oversmoothing. In this project, under our novel metrics, we isolate and directly measure the impact of the softmax bottleneck for the first time. We use a framework where the model expressivity ranges exhaustively from very constrained by the bottleneck to completely unconstrained. We also evaluate these models in terms of their sample quality both qualitatively and quantitatively, to further highlight the impact of oversmoothing and the bottleneck. Additionally, we evaluate an existing hypothesis that decoding methods, known to improve LLM sample quality, do so through mitigating oversmoothing. Finally, we compare this expressivity constraint when imposed post-training instead of pre-training, and explicitly evaluate the expressivity of bottlenecked model outputs, to supplement our work and findings. Our findings indicate a trade-off between expressivity and efficiency in terms of the softmax bottleneck, and suggest that a lack of oversmoothing is a necessary but not sufficient condition for good-quality text generation.
+
+## Code Structure
+
+The code base is split into 3 folders. Firstly models provides the model architectures, and training script for the models we train from scratch for this project. Then logits provides scripts which generate and save the numerical outputs from those models, as well as scripts to evaluate the quality of those outputs under our chosen metrics. Finally, in samples we provide scripts to generate discrete text from our models and then analyse the traits of and evaluate the quality of the sampled text.
+
+<!-- LLMs work by taking in text and suggesting things to stick at the end of it. For example, if we give an LLM the text "I drink a bottle of wate", we would expect it to suggest the character "r" as a possible next letter. Now they don't just suggest one possible completion, the model actually has a probability of how likely it is to suggest each possible completion. 
+
+Now you may think that both models are fine because they both say "r" is the most likely follow-up to this text. But -->
