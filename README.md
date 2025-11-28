@@ -1,5 +1,7 @@
 # How does the Softmax Bottleneck affect LLM Generation?
 
+This is a description and code base for my University of Edinburgh MSc Thesis.
+
 ## I'm not into ML - Why should I care?
 
 LLMs are really good at generating text, just look at ChatGPT, Claude, Gemini, etc. But they aren't perfect, and usually when we generate text from them we manipulate the output to improve the quality of the text. We have seen that this method works, and we have an idea why it works, but we haven't FULLY explored why it works and why the output isn't perfect in the first place. The work in this thesis allows us to more thoroughly understand how the method works and looks at one possible explanation for why the original output isn't good enough. It's one small slice of research that hopefully goes towards making LLMs a bit better :).
